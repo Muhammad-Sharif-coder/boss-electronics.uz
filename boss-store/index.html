@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOSS Store — Zamonaviy Mobil Texnologiya | Farg'ona</title>
+  <meta name="description" content="BOSS Store — Farg'ona viloyatida premium smartfonlar, aksessuarlar va gadjetlar. iPhone, Samsung, Xiaomi eng yaxshi narxlarda. Bepul yetkazib berish." />
+  <meta name="keywords" content="smartfon sotib olish, iPhone Fargona, Samsung Fargona, telefon do'koni, aksessuarlar, gadjetlar, BOSS Store" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://bossstore.uz/" />
+  <meta property="og:title" content="BOSS Store — Zamonaviy Mobil Texnologiya" />
+  <meta property="og:description" content="Premium smartfonlar, aksessuarlar va gadjetlar — eng yaxshi narxlarda." />
+  <meta property="og:url" content="https://bossstore.uz/" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <span><i class="fa fa-phone"></i> +998 94 446 40 40</span>
+    <span>$50 DAN ORTIQ BUYURTMALARGA BEPUL YETKAZIB BERISH</span>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <div class="logo-box"><i class="fa fa-bolt"></i> BOSS</div>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Bosh sahifa</a>
+      <a href="pages/dokon.html">Do'kon</a>
+      <a href="pages/haqimizda.html">Biz haqimizda</a>
+      <a href="pages/aloqa.html">Aloqa</a>
+    </nav>
+    <div class="nav-icons">
+      <button class="icon-btn" id="searchToggle"><i class="fa fa-search"></i></button>
+      <a href="pages/savatcha.html" class="icon-btn cart-btn">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- SEARCH BAR -->
+  <div class="search-bar" id="searchBar">
+    <input type="text" placeholder="Mahsulot qidiring..." id="searchInput" />
+    <button onclick="searchProducts()"><i class="fa fa-search"></i></button>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="badge"><i class="fa fa-bolt"></i> Yangi kelganlar 2026</div>
+      <h1>Zamonaviy<br><span class="green">Mobil Texnologiya</span></h1>
+      <p>Premium smartfonlar, aksessuarlar va gadjetlar<br>— eng yaxshisini talab qiladiganlar uchun.</p>
+      <div class="hero-btns">
+        <a href="pages/dokon.html" class="btn-primary">Xarid qilish <i class="fa fa-arrow-right"></i></a>
+        <a href="pages/dokon.html?category=smartfonlar" class="btn-outline">Telefonlarni ko'rish</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&q=80" alt="Smartphone" />
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stat-item">
+      <strong>5000+</strong>
+      <span>Baxtli mijozlar</span>
+    </div>
+    <div class="stat-item">
+      <strong>200+</strong>
+      <span>Mahsulotlar</span>
+    </div>
+    <div class="stat-item">
+      <strong>3</strong>
+      <span>Yil tajriba</span>
+    </div>
+    <div class="stat-item">
+      <strong>24/7</strong>
+      <span>Qo'llab-quvvatlash</span>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="categories section">
+    <div class="section-header">
+      <div>
+        <h2>Kategoriya bo'yicha xarid</h2>
+        <p>O'zingizga keraklisini toping</p>
+      </div>
+      <a href="pages/dokon.html" class="link-green">Barchasini ko'rish <i class="fa fa-chevron-right"></i></a>
+    </div>
+    <div class="category-grid">
+      <a href="pages/dokon.html?category=smartfonlar" class="category-card">
+        <div class="cat-icon"><i class="fa fa-mobile-alt"></i></div>
+        <h3>Smartfonlar</h3>
+        <span>Ko'rish <i class="fa fa-chevron-right"></i></span>
+      </a>
+      <a href="pages/dokon.html?category=aksessuarlar" class="category-card">
+        <div class="cat-icon"><i class="fa fa-headphones"></i></div>
+        <h3>Aksessuarlar</h3>
+        <span>Ko'rish <i class="fa fa-chevron-right"></i></span>
+      </a>
+      <a href="pages/dokon.html?category=gadjetlar" class="category-card">
+        <div class="cat-icon"><i class="fa fa-laptop"></i></div>
+        <h3>Gadjetlar</h3>
+        <span>Ko'rish <i class="fa fa-chevron-right"></i></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="products section">
+    <div class="section-header">
+      <div>
+        <h2>Tavsiya etilgan mahsulotlar</h2>
+        <p>Eng mashhur tanlovlarimiz</p>
+      </div>
+      <a href="pages/dokon.html" class="link-green">Barchasini ko'rish <i class="fa fa-chevron-right"></i></a>
+    </div>
+    <div class="product-grid" id="featuredProducts"></div>
+  </section>
+
+  <!-- BANNER -->
+  <section class="promo-banner section">
+    <div class="promo-text">
+      <span class="badge white-badge">Maxsus taklif</span>
+      <h2>iPhone 15 Pro Max'da<br><span class="green">$200 chegirma</span></h2>
+      <p>Faqat bu hafta. Miqdor cheklangan!</p>
+      <a href="pages/dokon.html?category=smartfonlar" class="btn-primary">Hozir xarid qilish</a>
+    </div>
+    <div class="promo-image">
+      <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&q=80" alt="iPhone promo" />
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter section">
+    <div class="newsletter-box">
+      <i class="fa fa-envelope newsletter-icon"></i>
+      <h2>Yangiliklardan xabardor bo'ling</h2>
+      <p>Eksklyuziv chegirmalar, yangi kelganlar va texnologiya yangiliklari.</p>
+      <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+        <input type="email" placeholder="email@manzilingiz.uz" required />
+        <button type="submit">Obuna bo'lish</button>
+      </form>
+      <p class="newsletter-success" id="newsletterSuccess">Muvaffaqiyatli obuna bo'ldingiz!</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-box small"><i class="fa fa-bolt"></i> BOSS</div>
+        <p>Smartfonlar, aksessuarlar va gadjetlarni eng yaxshi narxlarda sotib oling.</p>
+      </div>
+      <div class="footer-col">
+        <h4>TEZKOR HAVOLALAR</h4>
+        <a href="pages/dokon.html">Barcha mahsulotlar</a>
+        <a href="pages/haqimizda.html">Biz haqimizda</a>
+        <a href="pages/aloqa.html">Aloqa</a>
+        <a href="pages/savatcha.html">Savatcha</a>
+      </div>
+      <div class="footer-col">
+        <h4>KATEGORIYALAR</h4>
+        <a href="pages/dokon.html?category=smartfonlar">Smartfonlar</a>
+        <a href="pages/dokon.html?category=aksessuarlar">Aksessuarlar</a>
+        <a href="pages/dokon.html?category=gadjetlar">Gadjetlar</a>
+      </div>
+      <div class="footer-col">
+        <h4>ALOQA</h4>
+        <p><i class="fa fa-phone green-icon"></i> +998 94 446 40 40</p>
+        <p><i class="fa fa-envelope green-icon"></i> Uluggan@gmail.com</p>
+        <p><i class="fa fa-paper-plane green-icon"></i> @ulugxanboss</p>
+        <p><i class="fa fa-map-marker-alt green-icon"></i> Farg'ona viloyati Bag'dod tumani markazi</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 BOSS Store. Barcha huquqlar himoyalangan.</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

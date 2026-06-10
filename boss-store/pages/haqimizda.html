@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biz haqimizda — BOSS Store</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <span><i class="fa fa-phone"></i> +998 94 446 40 40</span>
+    <span>$50 DAN ORTIQ BUYURTMALARGA BEPUL YETKAZIB BERISH</span>
+  </div>
+
+  <header class="navbar">
+    <a href="../index.html" class="logo">
+      <div class="logo-box"><i class="fa fa-bolt"></i> BOSS</div>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html">Bosh sahifa</a>
+      <a href="dokon.html">Do'kon</a>
+      <a href="haqimizda.html" class="active">Biz haqimizda</a>
+      <a href="aloqa.html">Aloqa</a>
+    </nav>
+    <div class="nav-icons">
+      <button class="icon-btn" id="searchToggle"><i class="fa fa-search"></i></button>
+      <a href="savatcha.html" class="icon-btn cart-btn">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="search-bar" id="searchBar">
+    <input type="text" placeholder="Mahsulot qidiring..." id="searchInput" />
+    <button onclick="searchProducts()"><i class="fa fa-search"></i></button>
+  </div>
+
+  <div class="page-header">
+    <h1>Biz haqimizda</h1>
+    <p>BOSS Store — texnologiyani hammaga yaqin qilamiz</p>
+  </div>
+
+  <!-- About -->
+  <section class="about-section">
+    <div class="about-grid">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80" alt="Do'kon" />
+      <div class="about-text">
+        <div class="badge" style="margin-bottom:16px"><i class="fa fa-bolt"></i> Bizning hikoyamiz</div>
+        <h2>Premium texnologiyani<br><span class="green">hammaga yetkazamiz</span></h2>
+        <p>BOSS Store 2022-yilda Farg'ona viloyatida tashkil etilgan. Maqsadimiz — mijozlarimizga eng so'nggi va sifatli smartfonlar, aksessuarlar hamda gadjetlarni qulay narxlarda taklif etish.</p>
+        <p>3 yillik faoliyat davomida 5000 dan ortiq baxtli mijozlarga xizmat ko'rsatdik. Har bir mahsulotimiz original va kafolatlangan.</p>
+        <div style="display:flex;gap:24px;margin-top:24px">
+          <div style="text-align:center">
+            <strong style="font-size:28px;color:var(--green)">5000+</strong>
+            <p style="font-size:13px;color:var(--gray)">Mijozlar</p>
+          </div>
+          <div style="text-align:center">
+            <strong style="font-size:28px;color:var(--green)">200+</strong>
+            <p style="font-size:13px;color:var(--gray)">Mahsulotlar</p>
+          </div>
+          <div style="text-align:center">
+            <strong style="font-size:28px;color:var(--green)">3</strong>
+            <p style="font-size:13px;color:var(--gray)">Yil tajriba</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section" style="background:var(--light)">
+    <div style="text-align:center;margin-bottom:40px">
+      <h2 style="font-size:28px;font-weight:800">Bizning qadriyatlarimiz</h2>
+      <p style="color:var(--gray);margin-top:8px">Har bir qarorimizda yetakchilik qiladigan tamoyillar</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <div style="background:#fff;border-radius:16px;padding:32px;text-align:center;border:1px solid var(--border)">
+        <div class="cat-icon" style="margin:0 auto 16px"><i class="fa fa-gem"></i></div>
+        <h3 style="font-weight:700;margin-bottom:8px">Sifat</h3>
+        <p style="color:var(--gray);font-size:14px;line-height:1.7">Faqat original va sertifikatlangan mahsulotlar. Har bir tovar tekshirilgan.</p>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:32px;text-align:center;border:1px solid var(--border)">
+        <div class="cat-icon" style="margin:0 auto 16px"><i class="fa fa-heart"></i></div>
+        <h3 style="font-weight:700;margin-bottom:8px">Mijoz birinchi</h3>
+        <p style="color:var(--gray);font-size:14px;line-height:1.7">Mijozimiz qoniqishi — bizning asosiy maqsadimiz. 24/7 qo'llab-quvvatlash.</p>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:32px;text-align:center;border:1px solid var(--border)">
+        <div class="cat-icon" style="margin:0 auto 16px"><i class="fa fa-tag"></i></div>
+        <h3 style="font-weight:700;margin-bottom:8px">Adolatli narx</h3>
+        <p style="color:var(--gray);font-size:14px;line-height:1.7">Bozordagi eng raqobatbardosh narxlar. Chegirmalar va maxsus takliflar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section">
+    <div style="text-align:center;margin-bottom:40px">
+      <h2 style="font-size:28px;font-weight:800">Bizning jamoa</h2>
+      <p style="color:var(--gray);margin-top:8px">Professional va ishtiyoqli mutaxassislar</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Ulug'xon" />
+        <h4>Ulug'xon Normatov</h4>
+        <p>Asoschisi & Direktor</p>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="Malika" />
+        <h4>Malika Yusupova</h4>
+        <p>Savdo bo'limi boshlig'i</p>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80" alt="Jasur" />
+        <h4>Jasur Toshmatov</h4>
+        <p>Texnik mutaxassis</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-box small"><i class="fa fa-bolt"></i> BOSS</div>
+        <p>Smartfonlar, aksessuarlar va gadjetlarni eng yaxshi narxlarda sotib oling.</p>
+      </div>
+      <div class="footer-col">
+        <h4>TEZKOR HAVOLALAR</h4>
+        <a href="dokon.html">Barcha mahsulotlar</a>
+        <a href="haqimizda.html">Biz haqimizda</a>
+        <a href="aloqa.html">Aloqa</a>
+        <a href="savatcha.html">Savatcha</a>
+      </div>
+      <div class="footer-col">
+        <h4>KATEGORIYALAR</h4>
+        <a href="dokon.html?category=smartfonlar">Smartfonlar</a>
+        <a href="dokon.html?category=aksessuarlar">Aksessuarlar</a>
+        <a href="dokon.html?category=gadjetlar">Gadjetlar</a>
+      </div>
+      <div class="footer-col">
+        <h4>ALOQA</h4>
+        <p><i class="fa fa-phone green-icon"></i> +998 94 446 40 40</p>
+        <p><i class="fa fa-envelope green-icon"></i> Uluggan@gmail.com</p>
+        <p><i class="fa fa-map-marker-alt green-icon"></i> Farg'ona viloyati Bag'dod tumani</p>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 BOSS Store. Barcha huquqlar himoyalangan.</p></div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

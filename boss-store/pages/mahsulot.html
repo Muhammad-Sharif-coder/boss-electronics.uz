@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahsulot — BOSS Store</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <span><i class="fa fa-phone"></i> +998 94 446 40 40</span>
+    <span>$50 DAN ORTIQ BUYURTMALARGA BEPUL YETKAZIB BERISH</span>
+  </div>
+
+  <header class="navbar">
+    <a href="../index.html" class="logo">
+      <div class="logo-box"><i class="fa fa-bolt"></i> BOSS</div>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html">Bosh sahifa</a>
+      <a href="dokon.html">Do'kon</a>
+      <a href="haqimizda.html">Biz haqimizda</a>
+      <a href="aloqa.html">Aloqa</a>
+    </nav>
+    <div class="nav-icons">
+      <button class="icon-btn" id="searchToggle"><i class="fa fa-search"></i></button>
+      <a href="savatcha.html" class="icon-btn cart-btn">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="search-bar" id="searchBar">
+    <input type="text" placeholder="Mahsulot qidiring..." id="searchInput" />
+    <button onclick="searchProducts()"><i class="fa fa-search"></i></button>
+  </div>
+
+  <nav class="breadcrumb" id="breadcrumb">
+    <a href="../index.html">Bosh sahifa</a>
+    <i class="fa fa-chevron-right" style="font-size:10px"></i>
+    <a href="dokon.html">Do'kon</a>
+    <i class="fa fa-chevron-right" style="font-size:10px"></i>
+    <span id="breadcrumbName">Mahsulot</span>
+  </nav>
+
+  <div class="product-detail" id="productDetail">
+    <p style="color:#999">Yuklanmoqda...</p>
+  </div>
+
+  <!-- Related Products -->
+  <section class="section" style="background:var(--light)">
+    <div class="section-header">
+      <div><h2>O'xshash mahsulotlar</h2><p>Sizga yoqishi mumkin</p></div>
+    </div>
+    <div class="product-grid" id="relatedProducts"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-box small"><i class="fa fa-bolt"></i> BOSS</div>
+        <p>Smartfonlar, aksessuarlar va gadjetlarni eng yaxshi narxlarda sotib oling.</p>
+      </div>
+      <div class="footer-col">
+        <h4>TEZKOR HAVOLALAR</h4>
+        <a href="dokon.html">Barcha mahsulotlar</a>
+        <a href="haqimizda.html">Biz haqimizda</a>
+        <a href="aloqa.html">Aloqa</a>
+        <a href="savatcha.html">Savatcha</a>
+      </div>
+      <div class="footer-col">
+        <h4>KATEGORIYALAR</h4>
+        <a href="dokon.html?category=smartfonlar">Smartfonlar</a>
+        <a href="dokon.html?category=aksessuarlar">Aksessuarlar</a>
+        <a href="dokon.html?category=gadjetlar">Gadjetlar</a>
+      </div>
+      <div class="footer-col">
+        <h4>ALOQA</h4>
+        <p><i class="fa fa-phone green-icon"></i> +998 94 446 40 40</p>
+        <p><i class="fa fa-envelope green-icon"></i> Uluggan@gmail.com</p>
+        <p><i class="fa fa-map-marker-alt green-icon"></i> Farg'ona viloyati Bag'dod tumani</p>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 BOSS Store. Barcha huquqlar himoyalangan.</p></div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartCount();
+      const id = parseInt(new URLSearchParams(location.search).get('id'));
+      const p = products.find(x => x.id === id);
+      if (!p) {
+        document.getElementById('productDetail').innerHTML = '<p style="padding:60px;color:#999">Mahsulot topilmadi.</p>';
+        return;
+      }
+      document.title = `${p.name} — BOSS Store`;
+      document.getElementById('breadcrumbName').textContent = p.name;
+
+      const imgs = p.images || [p.image];
+      const specsHTML = Object.entries(p.specs).map(([k, v]) =>
+        `<div class="spec-row"><span>${k}</span><strong>${v}</strong></div>`
+      ).join('');
+      const thumbs = imgs.map((src, i) =>
+        `<img src="${src}" class="${i===0?'active':''}" onclick="switchImg('${src}',this)" />`
+      ).join('');
+
+      document.getElementById('productDetail').innerHTML = `
+        <div class="detail-gallery">
+          <div class="main-img"><img src="${imgs[0]}" id="mainImg" alt="${p.name}" /></div>
+          ${imgs.length > 1 ? `<div class="thumb-list">${thumbs}</div>` : ''}
+        </div>
+        <div class="detail-info">
+          <div class="product-brand">${p.brand}</div>
+          <h1>${p.name}</h1>
+          <div class="product-rating" style="font-size:15px;margin-bottom:16px">
+            ${'<i class="fa fa-star" style="color:#f59e0b"></i>'.repeat(Math.round(p.rating))}
+            <span style="margin-left:4px">${p.rating} (${p.reviews} sharh)</span>
+          </div>
+          <div style="margin-bottom:20px">
+            <span class="detail-price">$${p.price}</span>
+            ${p.oldPrice ? `<span class="detail-old">$${p.oldPrice}</span>` : ''}
+            ${p.oldPrice ? `<span style="background:#e8f5e9;color:var(--green);padding:4px 10px;border-radius:20px;font-size:13px;font-weight:700;margin-left:8px">
+              ${Math.round((1-p.price/p.oldPrice)*100)}% chegirma</span>` : ''}
+          </div>
+          <p class="detail-desc">${p.description}</p>
+          <div class="detail-specs">${specsHTML}</div>
+          <div class="detail-actions">
+            <button class="btn-primary" onclick="addToCart(${p.id})">
+              <i class="fa fa-shopping-cart"></i> Savatga qo'shish
+            </button>
+            <a href="savatcha.html" class="btn-outline">Savatchani ko'rish</a>
+          </div>
+          <div style="margin-top:20px;display:flex;gap:24px;font-size:13px;color:var(--gray)">
+            <span><i class="fa fa-truck green-icon"></i> Bepul yetkazib berish</span>
+            <span><i class="fa fa-shield-alt green-icon"></i> 1 yil kafolat</span>
+            <span><i class="fa fa-undo green-icon"></i> 30 kun qaytarish</span>
+          </div>
+        </div>`;
+
+      // Related products
+      const related = products.filter(x => x.category === p.category && x.id !== p.id).slice(0, 4);
+      document.getElementById('relatedProducts').innerHTML = related.map(x => productCard(x)).join('');
+    });
+
+    function switchImg(src, el) {
+      document.getElementById('mainImg').src = src;
+      document.querySelectorAll('.thumb-list img').forEach(i => i.classList.remove('active'));
+      el.classList.add('active');
+    }
+  </script>
+</body>
+</html>

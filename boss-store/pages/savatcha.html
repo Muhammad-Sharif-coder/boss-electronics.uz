@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Savatcha — BOSS Store</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <span><i class="fa fa-phone"></i> +998 94 446 40 40</span>
+    <span>$50 DAN ORTIQ BUYURTMALARGA BEPUL YETKAZIB BERISH</span>
+  </div>
+
+  <header class="navbar">
+    <a href="../index.html" class="logo">
+      <div class="logo-box"><i class="fa fa-bolt"></i> BOSS</div>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html">Bosh sahifa</a>
+      <a href="dokon.html">Do'kon</a>
+      <a href="haqimizda.html">Biz haqimizda</a>
+      <a href="aloqa.html">Aloqa</a>
+    </nav>
+    <div class="nav-icons">
+      <button class="icon-btn" id="searchToggle"><i class="fa fa-search"></i></button>
+      <a href="savatcha.html" class="icon-btn cart-btn">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="search-bar" id="searchBar">
+    <input type="text" placeholder="Mahsulot qidiring..." id="searchInput" />
+    <button onclick="searchProducts()"><i class="fa fa-search"></i></button>
+  </div>
+
+  <div class="page-header">
+    <h1>Savatcha</h1>
+    <p>Tanlangan mahsulotlaringiz</p>
+  </div>
+
+  <nav class="breadcrumb">
+    <a href="../index.html">Bosh sahifa</a>
+    <i class="fa fa-chevron-right" style="font-size:10px"></i>
+    <span>Savatcha</span>
+  </nav>
+
+  <div class="cart-layout">
+    <div class="cart-items" id="cartItems"></div>
+    <aside class="cart-summary">
+      <h3>Buyurtma xulosasi</h3>
+      <div class="summary-row"><span>Mahsulotlar</span><span id="cartSubtotal">$0</span></div>
+      <div class="summary-row"><span>Yetkazib berish</span><span id="cartShipping">$0</span></div>
+      <div class="summary-row total"><span>Jami</span><span id="cartTotal">$0</span></div>
+      <button class="btn-primary checkout-btn" onclick="checkout()">
+        <i class="fa fa-lock"></i> Buyurtma berish
+      </button>
+      <a href="dokon.html" style="display:block;text-align:center;margin-top:12px;font-size:14px;color:var(--gray)">
+        ← Do'konga qaytish
+      </a>
+    </aside>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-box small"><i class="fa fa-bolt"></i> BOSS</div>
+        <p>Smartfonlar, aksessuarlar va gadjetlarni eng yaxshi narxlarda sotib oling.</p>
+      </div>
+      <div class="footer-col">
+        <h4>TEZKOR HAVOLALAR</h4>
+        <a href="dokon.html">Barcha mahsulotlar</a>
+        <a href="haqimizda.html">Biz haqimizda</a>
+        <a href="aloqa.html">Aloqa</a>
+      </div>
+      <div class="footer-col">
+        <h4>KATEGORIYALAR</h4>
+        <a href="dokon.html?category=smartfonlar">Smartfonlar</a>
+        <a href="dokon.html?category=aksessuarlar">Aksessuarlar</a>
+        <a href="dokon.html?category=gadjetlar">Gadjetlar</a>
+      </div>
+      <div class="footer-col">
+        <h4>ALOQA</h4>
+        <p><i class="fa fa-phone green-icon"></i> +998 94 446 40 40</p>
+        <p><i class="fa fa-envelope green-icon"></i> Uluggan@gmail.com</p>
+        <p><i class="fa fa-map-marker-alt green-icon"></i> Farg'ona viloyati Bag'dod tumani</p>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 BOSS Store. Barcha huquqlar himoyalangan.</p></div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartCount();
+      renderCart();
+    });
+    function checkout() {
+      const cart = getCart();
+      if (!cart.length) { showToast("Savatcha bo'sh!"); return; }
+      if (confirm("Buyurtmani tasdiqlaysizmi?\n\nTez orada siz bilan bog'lanamiz!")) {
+        localStorage.removeItem('bossCart');
+        updateCartCount();
+        renderCart();
+        showToast("Buyurtmangiz qabul qilindi! Rahmat!");
+      }
+    }
+  </script>
+</body>
+</html>

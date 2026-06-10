@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Do'kon — BOSS Store</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <span><i class="fa fa-phone"></i> +998 94 446 40 40</span>
+    <span>$50 DAN ORTIQ BUYURTMALARGA BEPUL YETKAZIB BERISH</span>
+  </div>
+
+  <header class="navbar">
+    <a href="../index.html" class="logo">
+      <div class="logo-box"><i class="fa fa-bolt"></i> BOSS</div>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html">Bosh sahifa</a>
+      <a href="dokon.html" class="active">Do'kon</a>
+      <a href="haqimizda.html">Biz haqimizda</a>
+      <a href="aloqa.html">Aloqa</a>
+    </nav>
+    <div class="nav-icons">
+      <button class="icon-btn" id="searchToggle"><i class="fa fa-search"></i></button>
+      <a href="savatcha.html" class="icon-btn cart-btn">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="search-bar" id="searchBar">
+    <input type="text" placeholder="Mahsulot qidiring..." id="searchInput" />
+    <button onclick="searchProducts()"><i class="fa fa-search"></i></button>
+  </div>
+
+  <div class="page-header">
+    <h1>Do'kon</h1>
+    <p>Barcha mahsulotlarimizni ko'ring</p>
+  </div>
+
+  <nav class="breadcrumb">
+    <a href="../index.html">Bosh sahifa</a> <i class="fa fa-chevron-right" style="font-size:10px"></i> <span>Do'kon</span>
+  </nav>
+
+  <div class="shop-layout">
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <h3>Kategoriyalar</h3>
+        <label class="filter-option"><input type="checkbox" value="smartfonlar" onchange="renderShop()"> Smartfonlar</label>
+        <label class="filter-option"><input type="checkbox" value="aksessuarlar" onchange="renderShop()"> Aksessuarlar</label>
+        <label class="filter-option"><input type="checkbox" value="gadjetlar" onchange="renderShop()"> Gadjetlar</label>
+      </div>
+      <div class="sidebar-card">
+        <h3>Narx oralig'i</h3>
+        <p style="font-size:13px;color:#666;margin-bottom:8px">$0 — $<span id="priceVal">1500</span></p>
+        <input type="range" class="price-range" min="0" max="1500" value="1500" id="priceRange"
+          oninput="document.getElementById('priceVal').textContent=this.value" onchange="renderShop()" />
+      </div>
+      <div class="sidebar-card">
+        <h3>Brendlar</h3>
+        <label class="filter-option"><input type="checkbox" value="Apple" onchange="renderShop()"> Apple</label>
+        <label class="filter-option"><input type="checkbox" value="Samsung" onchange="renderShop()"> Samsung</label>
+        <label class="filter-option"><input type="checkbox" value="Google" onchange="renderShop()"> Google</label>
+        <label class="filter-option"><input type="checkbox" value="Xiaomi" onchange="renderShop()"> Xiaomi</label>
+        <label class="filter-option"><input type="checkbox" value="Sony" onchange="renderShop()"> Sony</label>
+      </div>
+    </aside>
+
+    <main class="shop-main">
+      <div class="shop-toolbar">
+        <p><span id="productCount">8 ta mahsulot</span></p>
+        <select id="sortSelect" onchange="renderShop()">
+          <option value="default">Saralash: Standart</option>
+          <option value="price-asc">Narx: Arzondan qimmatlga</option>
+          <option value="price-desc">Narx: Qimmatdan arzonga</option>
+          <option value="rating">Reyting bo'yicha</option>
+        </select>
+      </div>
+      <div class="product-grid-3" id="shopProducts"></div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-box small"><i class="fa fa-bolt"></i> BOSS</div>
+        <p>Smartfonlar, aksessuarlar va gadjetlarni eng yaxshi narxlarda sotib oling.</p>
+      </div>
+      <div class="footer-col">
+        <h4>TEZKOR HAVOLALAR</h4>
+        <a href="dokon.html">Barcha mahsulotlar</a>
+        <a href="haqimizda.html">Biz haqimizda</a>
+        <a href="aloqa.html">Aloqa</a>
+        <a href="savatcha.html">Savatcha</a>
+      </div>
+      <div class="footer-col">
+        <h4>KATEGORIYALAR</h4>
+        <a href="dokon.html?category=smartfonlar">Smartfonlar</a>
+        <a href="dokon.html?category=aksessuarlar">Aksessuarlar</a>
+        <a href="dokon.html?category=gadjetlar">Gadjetlar</a>
+      </div>
+      <div class="footer-col">
+        <h4>ALOQA</h4>
+        <p><i class="fa fa-phone green-icon"></i> +998 94 446 40 40</p>
+        <p><i class="fa fa-envelope green-icon"></i> Uluggan@gmail.com</p>
+        <p><i class="fa fa-map-marker-alt green-icon"></i> Farg'ona viloyati Bag'dod tumani</p>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 BOSS Store. Barcha huquqlar himoyalangan.</p></div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(location.search);
+      const q = params.get('q');
+      if (q) document.getElementById('searchInput').value = q;
+      renderShop();
+    });
+
+    function renderShop() {
+      const params = new URLSearchParams(location.search);
+      const urlCat = params.get('category') || '';
+      const q = document.getElementById('searchInput')?.value.trim().toLowerCase() || params.get('q') || '';
+      const sort = document.getElementById('sortSelect')?.value || 'default';
+      const maxPrice = parseInt(document.getElementById('priceRange')?.value || 1500);
+
+      const catChecks = [...document.querySelectorAll('.sidebar input[type=checkbox][value=smartfonlar], .sidebar input[type=checkbox][value=aksessuarlar], .sidebar input[type=checkbox][value=gadjetlar]')]
+        .filter(i => i.checked).map(i => i.value);
+      const brandChecks = [...document.querySelectorAll('.sidebar input[type=checkbox][value=Apple], .sidebar input[type=checkbox][value=Samsung], .sidebar input[type=checkbox][value=Google], .sidebar input[type=checkbox][value=Xiaomi], .sidebar input[type=checkbox][value=Sony]')]
+        .filter(i => i.checked).map(i => i.value);
+
+      let filtered = [...products];
+      if (urlCat && !catChecks.length) filtered = filtered.filter(p => p.category === urlCat);
+      if (catChecks.length) filtered = filtered.filter(p => catChecks.includes(p.category));
+      if (brandChecks.length) filtered = filtered.filter(p => brandChecks.includes(p.brand));
+      if (q) filtered = filtered.filter(p => p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q));
+      filtered = filtered.filter(p => p.price <= maxPrice);
+
+      if (sort === 'price-asc') filtered.sort((a,b) => a.price - b.price);
+      else if (sort === 'price-desc') filtered.sort((a,b) => b.price - a.price);
+      else if (sort === 'rating') filtered.sort((a,b) => b.rating - a.rating);
+
+      const el = document.getElementById('shopProducts');
+      const countEl = document.getElementById('productCount');
+      if (countEl) countEl.textContent = `${filtered.length} ta mahsulot`;
+      if (el) el.innerHTML = filtered.length
+        ? filtered.map(p => productCard(p)).join('')
+        : '<p style="color:#999;padding:40px 0;grid-column:1/-1">Mahsulot topilmadi.</p>';
+
+      if (urlCat) {
+        document.querySelectorAll(`.sidebar input[value="${urlCat}"]`).forEach(i => i.checked = true);
+      }
+    }
+  </script>
+</body>
+</html>
