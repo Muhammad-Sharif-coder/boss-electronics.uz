@@ -166,3 +166,48 @@ function subscribeNewsletter(e) {
   document.getElementById('newsletterSuccess').style.display = 'block';
   e.target.reset();
 }
+// ===== NASIYA KALKULYATOR =====
+const nasiyaFoizlar = {
+  3: 5,
+  6: 10,
+  9: 15,
+  12: 20
+};
+
+function nasiyaHisобла(narx, oy) {
+  const foiz = nasiyaFoizlar[oy];
+  const umumiy = narx * (1 + foiz / 100);
+  const oylik = umumiy / oy;
+  return {
+    oylik: Math.round(oylik),
+    umumiy: Math.round(umumiy),
+    foiz: foiz
+  };
+}
+
+function nasiyaOyTanlash(oy, narx) {
+  // Barcha tugmalardan active klassini olib tashlash
+  document.querySelectorAll('.nasiya-oy-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  // Tanlangan tugmaga active klassi berish
+  document.querySelector(`.nasiya-oy-btn[data-oy="${oy}"]`).classList.add('active');
+
+  const natija = nasiyaHisобла(narx, oy);
+
+  document.getElementById('nasiyaOylik').textContent =
+    '$' + natija.oylik.toLocaleString();
+  document.getElementById('nasiyaUmumiy').textContent =
+    '$' + natija.umumiy.toLocaleString();
+  document.getElementById('nasiyaFoiz').textContent =
+    natija.foiz + '% ustama';
+  document.getElementById('nasiyaMuddat').textContent =
+    oy + ' oy';
+}
+
+function nasiyaBuyurtma(narx) {
+  const activeBtn = document.querySelector('.nasiya-oy-btn.active');
+  const oy = parseInt(activeBtn.dataset.oy);
+  const natija = nasiyaHisобла(narx, oy);
+  showToast(`Nasiya buyurtma: ${oy} oy, oyiga $${natija.oylik.toLocaleString()}`);
+}
