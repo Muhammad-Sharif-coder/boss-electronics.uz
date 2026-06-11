@@ -129,6 +129,45 @@
           </div>
           <p class="detail-desc">${p.description}</p>
           <div class="detail-specs">${specsHTML}</div>
+          <!-- NASIYA KALKULYATOR -->
+<div class="nasiya-box" id="nasiyaBox" style="display:none">
+  <h3>💳 Nasiya savdo</h3>
+  <p class="nasiya-subtitle">Qulay to'lov muddatini tanlang</p>
+  
+  <div class="nasiya-oylar">
+    <button class="nasiya-oy-btn active" data-oy="3" 
+      onclick="nasiyaOyTanlash(3, currentPrice)">3 oy</button>
+    <button class="nasiya-oy-btn" data-oy="6" 
+      onclick="nasiyaOyTanlash(6, currentPrice)">6 oy</button>
+    <button class="nasiya-oy-btn" data-oy="9" 
+      onclick="nasiyaOyTanlash(9, currentPrice)">9 oy</button>
+    <button class="nasiya-oy-btn" data-oy="12" 
+      onclick="nasiyaOyTanlash(12, currentPrice)">12 oy</button>
+  </div>
+
+  <div class="nasiya-natija">
+    <div class="nasiya-row">
+      <span>Muddat</span>
+      <span id="nasiyaMuddat">3 oy</span>
+    </div>
+    <div class="nasiya-row">
+      <span>Ustama foiz</span>
+      <span id="nasiyaFoiz">5%</span>
+    </div>
+    <div class="nasiya-row jami">
+      <span>Umumiy summa</span>
+      <span id="nasiyaUmumiy">—</span>
+    </div>
+    <div class="nasiya-row oylik">
+      <span>Oylik to'lov</span>
+      <span id="nasiyaOylik">—</span>
+    </div>
+  </div>
+
+  <button class="nasiya-btn" onclick="nasiyaBuyurtma(currentPrice)">
+    💳 Nasiya bo'yicha buyurtma berish
+  </button>
+</div>
           <div class="detail-actions">
             <button class="btn-primary" onclick="addToCart(${p.id})">
               <i class="fa fa-shopping-cart"></i> Savatga qo'shish
