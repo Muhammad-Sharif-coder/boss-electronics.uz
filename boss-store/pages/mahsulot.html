@@ -129,6 +129,13 @@
           </div>
           <p class="detail-desc">${p.description}</p>
           <div class="detail-specs">${specsHTML}</div>
+          // Nasiya kalkulyatorni ishga tushirish
+currentPrice = p.price;
+const nasiyaBox = document.getElementById('nasiyaBox');
+if (nasiyaBox) {
+  nasiyaBox.style.display = 'block';
+  nasiyaOyTanlash(3, p.price);
+}
           <!-- NASIYA KALKULYATOR -->
 <div class="nasiya-box" id="nasiyaBox" style="display:none">
   <h3>💳 Nasiya savdo</h3>
@@ -185,7 +192,7 @@
       const related = products.filter(x => x.category === p.category && x.id !== p.id).slice(0, 4);
       document.getElementById('relatedProducts').innerHTML = related.map(x => productCard(x)).join('');
     });
-
+    let currentPrice = 0;
     function switchImg(src, el) {
       document.getElementById('mainImg').src = src;
       document.querySelectorAll('.thumb-list img').forEach(i => i.classList.remove('active'));
